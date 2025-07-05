@@ -108,3 +108,67 @@ kubectl get namespaces --show-labels | grep dynatrace.com/inject
 | Pods existentes                           | ❌ Precisam ser reiniciados     |
 
 
+# Validações 
+
+## Verificar Configuração do Dynakube
+
+```bash 
+kubectl get dynakube -n dynatrace
+```
+## Para ver os detalhes:
+
+```bash 
+kubectl describe dynakube productionk8s -n dynatrace
+```
+Verifique se contém seções como:
+
+* oneAgent:
+* applicationMonitoring:
+* namespaceSelector:
+
+## Verificar Namespaces com Label de Dynatrace
+
+```bash
+kubectl get ns --show-labels | grep dynakube.internal.dynatrace.com/instance
+```
+Isso mostra se o label de autoingestão está aplicado corretamente.
+
+
+## Verificar Injeção do OneAgent em Pods
+
+Escolha um namespace que esteja com o label do Dynatrace, por exemplo <my-app>:
+
+```bash
+kubectl get pods -n my-app -o json | jq '.items[].spec.containers[].name'
+```
+
+## Verificar Logs do OneAgent Operator
+
+Veja se o operador está funcionando corretamente:
+
+```bash
+kubectl get pods -n dynatrace
+```
+Procure um pod com nome tipo:
+dynatrace-oneagent-operator-xxxxx
+
+Depois: 
+
+```bash
+kubectl logs <nome-do-pod> -n dynatrace
+```
+
+Você deve ver mensagens como:
+
+* instrumenting pod
+* injecting Dynatrace OneAgent
+* namespace matched by namespaceSelector
+
+
+## Verificar Métricas no Dynatrace
+
+No Dynatrace (interface web):
+
+* Vá até “Hosts” ou “Workloads”
+* Verifique se os pods e namespaces aparecem
+* Veja se estão gerando métricas, logs ou traces
