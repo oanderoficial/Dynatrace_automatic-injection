@@ -99,7 +99,7 @@ Ou veja diretamente no Dynatrace UI → Hosts ou Smartscape.
 kubectl get namespaces --show-labels | grep dynatrace.com/inject
 ```
 
-## 🧠 Observações importantes:
+## Observações importantes:
 
 | Situação                                  | Comportamento                   |
 | ----------------------------------------- | ------------------------------   
