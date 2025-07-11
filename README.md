@@ -1,5 +1,5 @@
 # Dynatrace_automatic-injection
-Desabilitar a auto-injeção de OneAgent globalmente e ativar apenas em namespaces com o label  ```bash dynatrace.com/inject=true. ```
+Desabilitar a auto-injeção do OneAgent globalmente e ativar apenas em namespaces com o label  ```bash dynatrace.com/inject=true. ```
 
 ## Passo a passo: Injeção seletiva do OneAgent com DynaKube
 
