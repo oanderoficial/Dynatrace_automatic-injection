@@ -7,7 +7,7 @@ Desabilitar a auto-injeção do OneAgent globalmente e ativar apenas em namespac
 
 No Rancher ou via  <strong> kubectl </strong>, edite o recurso atual:
 
-```bash kubectl edit dynakube productionk8s -n dynatrace ```
+```kubectl edit dynakube productionk8s -n dynatrace ```
 
 ## 2️⃣ Altere o campo de auto-injeção automática
 
